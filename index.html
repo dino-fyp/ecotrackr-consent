@@ -1,135 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>EcoTrackr – Trail Participation Consent</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>EcoTrackr – Trail Consent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f5f7fb;
-      padding: 20px;
-      color: #1e293b;
+    * {
+      box-sizing: border-box;
     }
 
-    .card {
-      max-width: 720px;
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #f5f7fb, #eef2f7);
+      padding: 20px;
+      color: #0f172a;
+    }
+
+    .phone {
+      max-width: 420px;
       margin: auto;
       background: #ffffff;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    h3 {
-      margin-top: 25px;
-      font-size: 18px;
-    }
-
-    p {
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid #e5e7eb;
-      margin: 25px 0;
-    }
-
-    .btn {
-      display: block;
-      margin-top: 20px;
-      padding: 14px;
+    .header {
+      padding: 24px 20px 16px;
       text-align: center;
-      background: #1e293b;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 16px;
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    .btn:hover {
-      background: #0f172a;
+    .header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
     }
 
-    .secondary {
-      margin-top: 12px;
-      text-align: center;
+    .header p {
+      margin-top: 6px;
       font-size: 14px;
       color: #64748b;
     }
 
-    footer {
-      margin-top: 30px;
-      font-size: 13px;
-      color: #64748b;
+    .content {
+      padding: 20px;
+      max-height: 55vh;
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .content p {
+      margin-bottom: 14px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 18px 0;
+    }
+
+    .location {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 18px;
+    }
+
+    .location strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .buttons {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .btn {
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
       text-align: center;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn.accept {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn.accept:hover {
+      background: #1d4ed8;
+    }
+
+    .btn.decline {
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    .btn.decline:hover {
+      background: #e2e8f0;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      padding-bottom: 14px;
     }
   </style>
 </head>
-
 <body>
 
-<div class="card">
+<div class="phone">
 
-  <h1>EcoTrackr Trail Participation Consent</h1>
+  <div class="header">
+    <h2>EcoTrackr Consent</h2>
+    <p>Eco-Trail Safety & Navigation</p>
+  </div>
 
-  <p>
-    By accessing and proceeding with this activity, you acknowledge that participation
-    in eco-trail and outdoor activities involves inherent risks, including but not limited
-    to uneven terrain, changing weather conditions, wildlife encounters, and physical exertion.
-  </p>
+  <div class="content">
+    <p>
+      By participating in the Eco-Trail activity, you acknowledge that outdoor
+      activities involve inherent risks, including uneven terrain, weather changes,
+      and possible wildlife encounters.
+    </p>
 
-  <p>
-    You confirm that you are voluntarily participating in this activity and agree to follow
-    all safety instructions, warning signs, and guidance provided by the organizers or safety
-    checkpoints throughout the trail.
-  </p>
+    <p>
+      You agree to follow all safety instructions provided by EcoTrackr checkpoints
+      and to take full responsibility for your personal safety during the activity.
+    </p>
 
-  <p>
-    You accept full personal responsibility for your safety and understand that the organizers
-    and system operators are not liable for injuries, losses, or damages arising from failure
-    to comply with safety guidelines.
-  </p>
+    <p>
+      In case of emergency, please proceed to the nearest safety checkpoint or
+      contact local authorities immediately.
+    </p>
 
-  <p>
-    In the event of an emergency, please proceed immediately to the nearest safety checkpoint
-    or contact local emergency authorities.
-  </p>
+    <div class="divider"></div>
 
-  <hr>
+    <div class="location">
+      <strong>📍 Trail Starting Point</strong>
+      Tap “Accept & Continue” to open Google Maps and navigate to the Eco-Trail checkpoint.
+    </div>
+  </div>
 
-  <h3>📍 Trail Starting Point</h3>
+  <div class="buttons">
+    <button class="btn accept" onclick="acceptConsent()">
+      I Agree & Continue
+    </button>
 
-  <p>
-    Use the button below to open Google Maps and navigate to the official Eco-Trail checkpoint
-    location.
-  </p>
+    <button class="btn decline" onclick="declineConsent()">
+      I Do Not Agree
+    </button>
+  </div>
 
-  <a class="btn"
-     href="https://www.google.com/maps?q=3.1390,101.6869"
-     target="_blank">
-    Open Location in Google Maps
-  </a>
-
-  <p class="secondary">
-    By clicking the button above, your consent to participate is assumed.
-  </p>
-
-  <footer>
-    EcoTrackr Safety & Tracking System<br>
-    This page is provided for informational and consent purposes only.
-  </footer>
+  <div class="footer-note">
+    EcoTrackr © 2025 · Safety-First Eco Tourism
+  </div>
 
 </div>
+
+<script>
+  function acceptConsent() {
+    // Redirect to Google Maps
+    window.location.href = "https://www.google.com/maps?q=3.1390,101.6869";
+  }
+
+  function declineConsent() {
+    alert(
+      "You must accept the consent to participate in the Eco-Trail activity."
+    );
+  }
+</script>
 
 </body>
 </html>
