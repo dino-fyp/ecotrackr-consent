@@ -137,14 +137,6 @@ body {
     </p>
 
     <div class="section">
-      <strong>📍 Checkpoint Progress</strong>
-      <div class="status">
-        Checkpoint 1: ❌ Not checked-in<br>
-        Checkpoint 2: 🔒 Locked
-      </div>
-    </div>
-
-    <div class="section">
       <strong>🧭 Trail Navigation</strong>
       Use the buttons below to navigate between trail checkpoints.
     </div>
@@ -156,8 +148,8 @@ body {
       Navigate to Checkpoint 1
     </button>
 
-    <button class="btn locked">
-      Navigate to Checkpoint 2 (Locked)
+    <button class="btn primary" onclick="goCheckpoint2()">
+      Navigate to Checkpoint 2
     </button>
 
     <button class="btn emergency" onclick="emergencyHelp()">
