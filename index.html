@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>EcoTrackr – Trail Consent</title>
+<title>EcoTrackr – Trail Assistant</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <style>
@@ -61,11 +61,6 @@ body {
   margin-bottom: 8px;
 }
 
-.status {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
 .buttons {
   padding: 18px;
   display: flex;
@@ -75,12 +70,15 @@ body {
 }
 
 .btn {
+  /* Set fixed width to 100% of container for uniform look */
+  width: 100%; 
   padding: 14px;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   border: none;
+  display: block;
 }
 
 .btn.primary {
@@ -89,27 +87,17 @@ body {
 }
 .btn.primary:hover { background: #1d4ed8; }
 
-.btn.secondary {
-  background: #e2e8f0;
-  color: #475569;
-}
-
 .btn.locked {
   background: #e5e7eb;
   color: #94a3b8;
   cursor: not-allowed;
 }
 
-.btn.emergency {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
 .footer-note {
   text-align: center;
   font-size: 12px;
   color: #94a3b8;
-  padding-bottom: 14px;
+  padding: 20px 0;
 }
 </style>
 </head>
@@ -124,61 +112,91 @@ body {
   </div>
 
   <div class="content">
+    <p>By participating in the Eco-Trail activity, you acknowledge inherent risks and agree to follow all safety instructions[cite: 1731].</p>
 
-    <p>
-      By participating in the Eco-Trail activity, you acknowledge that outdoor
-      activities involve inherent risks such as uneven terrain, weather changes,
-      and wildlife encounters.
-    </p>
-
-    <p>
-      You agree to follow all safety instructions provided at EcoTrackr checkpoints
-      and take responsibility for your own safety during the trail.
-    </p>
-
-    <div class="section">
-      <strong>🧭 Trail Navigation</strong>
-      Use the buttons below to navigate between trail checkpoints.
+    <div class="section" id="navInstruction">
+      <strong>🧭 Step 1: Entry</strong>
+      Agree to the terms below to navigate to Checkpoint 1.
     </div>
 
-  <div class="section" style="background: #fff; border: 1px solid #e2e8f0;">
-    <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
-        <input type="checkbox" id="consentCheckbox" onchange="toggleButtons()" style="width: 20px; height: 20px; margin-top: 2px;">
-        <span style="font-size: 14px; color: #334155;">
-            I have read the safety instructions and agree to the trail terms and conditions.
-        </span>
-    </label>
-</div>
+    <div class="section" style="background: #fff; border: 1px solid #e2e8f0;">
+      <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+          <input type="checkbox" id="consentCheckbox" onchange="handleConsent()" style="width: 20px; height: 20px; margin-top: 2px;">
+          <span style="font-size: 14px; color: #334155;">
+              I have read the safety instructions and agree to the trail terms[cite: 1731].
+          </span>
+      </label>
+    </div>
 
-<div class="buttons">
+    <div id="step2Section" class="section" style="display: none; background: #f0fdf4; border-left: 4px solid #22c55e;">
+      <strong>🧭 Step 2: Path Forward</strong>
+      Hiker detected at Checkpoint 1. Tap below for the exit route[cite: 1681].
+    </div>
+  </div>
+
+  <div class="buttons">
     <button id="btnCP1" class="btn locked" onclick="goCheckpoint1()" disabled>
         Navigate to Checkpoint 1
     </button>
 
-    <button id="btnCP2" class="btn locked" onclick="goCheckpoint2()" disabled>
+    <button id="btnCP2" class="btn locked" onclick="goCheckpoint2()" style="display: none;" disabled>
         Navigate to Checkpoint 2
     </button>
+  </div>
+
+  <div class="footer-note">
+    EcoTrackr © 2025 · Safety-First Eco Tourism
+  </div>
+
 </div>
 
 <script>
-function toggleButtons() {
+// Extract token from URL
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
+
+function handleConsent() {
     const isChecked = document.getElementById('consentCheckbox').checked;
     const btn1 = document.getElementById('btnCP1');
-    const btn2 = document.getElementById('btnCP2');
 
     if (isChecked) {
-        // Unlock buttons
         btn1.className = "btn primary";
-        btn2.className = "btn primary";
         btn1.disabled = false;
-        btn2.disabled = false;
+        
+        // AUTOMATIC: Navigate immediately as requested 
+        setTimeout(() => {
+            goCheckpoint1();
+        }, 500); 
+
+        // Start polling to see if hiker reached node
+        startStatusPolling();
     } else {
-        // Lock buttons
         btn1.className = "btn locked";
-        btn2.className = "btn locked";
         btn1.disabled = true;
-        btn2.disabled = true;
     }
+}
+
+function startStatusPolling() {
+    // Poll the server to check if RFID has been scanned [cite: 1700]
+    setInterval(() => {
+        fetch(`https://your-server-ip/api/get_hiker_progress.php?token=${token}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'at_checkpoint_1') {
+                    showCheckpoint2();
+                }
+            });
+    }, 5000);
+}
+
+function showCheckpoint2() {
+    document.getElementById('step2Section').style.display = 'block';
+    document.getElementById('navInstruction').style.display = 'none';
+    
+    const btn2 = document.getElementById('btnCP2');
+    btn2.style.display = 'block';
+    btn2.className = "btn primary";
+    btn2.disabled = false;
 }
 
 function goCheckpoint1() {
