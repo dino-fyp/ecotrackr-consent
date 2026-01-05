@@ -1,95 +1,371 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <title>EcoTrackr – Trail Assistant</title>
+
+  <title>EcoTrackr – Trail Consent</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
   <style>
-    /* ... (Keep your existing CSS here) ... */
-    .btn.hidden { display: none; }
-    .status-badge { font-size: 12px; padding: 4px 8px; border-radius: 20px; background: #dcfce7; color: #166534; font-weight: bold; }
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+
+
+    body {
+
+      margin: 0;
+
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+      background: linear-gradient(180deg, #f5f7fb, #eef2f7);
+
+      padding: 20px;
+
+      color: #0f172a;
+
+    }
+
+
+
+    .phone {
+
+      max-width: 420px;
+
+      margin: auto;
+
+      background: #ffffff;
+
+      border-radius: 24px;
+
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+
+      overflow: hidden;
+
+    }
+
+
+
+    .header {
+
+      padding: 24px 20px 16px;
+
+      text-align: center;
+
+      border-bottom: 1px solid #e5e7eb;
+
+    }
+
+
+
+    .header h2 {
+
+      margin: 0;
+
+      font-size: 22px;
+
+      font-weight: 700;
+
+    }
+
+
+
+    .header p {
+
+      margin-top: 6px;
+
+      font-size: 14px;
+
+      color: #64748b;
+
+    }
+
+
+
+    .content {
+
+      padding: 20px;
+
+      max-height: 55vh;
+
+      overflow-y: auto;
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    .content p {
+
+      margin-bottom: 14px;
+
+    }
+
+
+
+    .divider {
+
+      height: 1px;
+
+      background: #e5e7eb;
+
+      margin: 18px 0;
+
+    }
+
+
+
+    .location {
+
+      background: #f8fafc;
+
+      border-radius: 12px;
+
+      padding: 14px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+
+    .location strong {
+
+      display: block;
+
+      margin-bottom: 6px;
+
+    }
+
+
+
+    .buttons {
+
+      padding: 18px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+      border-top: 1px solid #e5e7eb;
+
+    }
+
+
+
+    .btn {
+
+      padding: 14px;
+
+      border-radius: 12px;
+
+      font-size: 16px;
+
+      font-weight: 600;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      border: none;
+
+    }
+
+
+
+    .btn.accept {
+
+      background: #2563eb;
+
+      color: #ffffff;
+
+    }
+
+
+
+    .btn.accept:hover {
+
+      background: #1d4ed8;
+
+    }
+
+
+
+    .btn.decline {
+
+      background: #f1f5f9;
+
+      color: #334155;
+
+    }
+
+
+
+    .btn.decline:hover {
+
+      background: #e2e8f0;
+
+    }
+
+
+
+    .footer-note {
+
+      text-align: center;
+
+      font-size: 12px;
+
+      color: #94a3b8;
+
+      padding-bottom: 14px;
+
+    }
+
   </style>
+
 </head>
+
 <body>
 
+
+
 <div class="phone">
+
+
+
   <div class="header">
+
     <h2>EcoTrackr Consent</h2>
-    <p id="trailStatus">Eco-Trail Safety & Navigation</p>
+
+    <p>Eco-Trail Safety & Navigation</p>
+
   </div>
 
-  <div class="content" id="mainContent">
-    <p>Outdoor activities involve inherent risks. You agree to follow all safety instructions provided by EcoTrackr checkpoints.</p>
-    
+
+
+  <div class="content">
+
+    <p>
+
+      By participating in the Eco-Trail activity, you acknowledge that outdoor
+
+      activities involve inherent risks, including uneven terrain, weather changes,
+
+      and possible wildlife encounters.
+
+    </p>
+
+
+
+    <p>
+
+      You agree to follow all safety instructions provided by EcoTrackr checkpoints
+
+      and to take full responsibility for your personal safety during the activity.
+
+    </p>
+
+
+
+    <p>
+
+      In case of emergency, please proceed to the nearest safety checkpoint or
+
+      contact local authorities immediately.
+
+    </p>
+
+
+
     <div class="divider"></div>
 
-    <div class="location" id="navigationBox">
-      <strong id="locTitle">📍 Trail Starting Point</strong>
-      <p id="locDesc">Tap “Accept & Continue” to navigate to Checkpoint 1.</p>
+
+
+    <div class="location">
+
+      <strong>📍 Trail Starting Point</strong>
+
+      Tap “Accept & Continue” to open Google Maps and navigate to the Checkpoint 1.
+
     </div>
+
   </div>
 
-  <div class="buttons" id="consentButtons">
-    <button class="btn accept" onclick="acceptConsent()">I Agree & Continue</button>
-    <button class="btn decline" onclick="declineConsent()">I Do Not Agree</button>
+
+
+  <div class="buttons">
+
+    <button class="btn accept" onclick="acceptConsent()">
+
+      I Agree & Continue
+
+    </button>
+
+
+
+    <button class="btn decline" onclick="declineConsent()">
+
+      I Do Not Agree
+
+    </button>
+
   </div>
 
-  <div class="buttons hidden" id="navButtons">
-    <a id="dynamicMapsLink" href="https://www.google.com/maps/search/?api=1&query=3.0698,101.5037" 
-       target="_blank" class="btn accept" style="text-decoration:none;">
-       Open Maps to Checkpoint 1
-    </a>
-    <p style="text-align:center; font-size:12px; color:#64748b;">Scan your RFID at the node to unlock Checkpoint 2.</p>
+
+
+  <div class="footer-note">
+
+    EcoTrackr © 2025 · Safety-First Eco Tourism
+
   </div>
 
-  <div class="footer-note">EcoTrackr © 2025 · Safety-First Eco Tourism</div>
+
+
 </div>
 
+
+
 <script>
-  // Extract token from URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get('token');
 
   function acceptConsent() {
-    // Hide consent, show navigation to CP1
-    document.getElementById('consentButtons').classList.add('hidden');
-    document.getElementById('navButtons').classList.remove('hidden');
-    
-    // Start checking for CP1 scan
-    startStatusPolling();
+
+    // Redirect to Google Maps
+
+    window.location.href = "https://www.google.com/maps?q=3.0712, 101.4999";
+
   }
 
-  function startStatusPolling() {
-    const poll = setInterval(() => {
-      // Use your actual server domain here
-      fetch(`https://192.168.137.1/api/get_hiker_progress.php?token=${token}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.status === 'at_checkpoint_1') {
-            clearInterval(poll); // Stop asking the server
-            unlockCheckpoint2();
-          }
-        })
-        .catch(err => console.error("Sync Error:", err));
-    }, 5000); // Check every 5 seconds
-  }
 
-  function unlockCheckpoint2() {
-    // Update UI for the second leg of the journey
-    document.getElementById('locTitle').innerHTML = "✅ Checkpoint 1 Reached!";
-    document.getElementById('locDesc').innerText = "You are on the trail. Navigate to the Exit point below.";
-    document.getElementById('navigationBox').style.background = "#f0fdf4";
-    
-    const mapBtn = document.getElementById('dynamicMapsLink');
-    mapBtn.innerText = "Navigate to Checkpoint 2 (Exit)";
-    mapBtn.href = "https://www.google.com/maps/search/?api=1&query=3.0725,101.4812";
-    mapBtn.style.background = "#16a34a";
-  }
 
   function declineConsent() {
-    alert("You must accept the consent to participate.");
+
+    alert(
+
+      "You must accept the consent to participate in the Eco-Trail activity."
+
+    );
+
   }
+
 </script>
 
+
+
 </body>
+
 </html>
