@@ -141,34 +141,52 @@ body {
       Use the buttons below to navigate between trail checkpoints.
     </div>
 
-    <div class="location">
-      <strong>📍 Trail Starting Point</strong>
-      Tap “Accept & Continue” to open Google Maps and navigate to the Checkpoint 1.
-    </div>
-  </div>
+  <div class="section" style="background: #fff; border: 1px solid #e2e8f0;">
+    <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+        <input type="checkbox" id="consentCheckbox" onchange="toggleButtons()" style="width: 20px; height: 20px; margin-top: 2px;">
+        <span style="font-size: 14px; color: #334155;">
+            I have read the safety instructions and agree to the trail terms and conditions.
+        </span>
+    </label>
+</div>
 
-  <div class="buttons">
-    <button class="btn primary" onclick="goCheckpoint1()">
-      Navigate to Checkpoint 1
+<div class="buttons">
+    <button id="btnCP1" class="btn locked" onclick="goCheckpoint1()" disabled>
+        Navigate to Checkpoint 1
     </button>
 
-    <button class="btn primary" onclick="goCheckpoint2()">
-      Navigate to Checkpoint 2
+    <button id="btnCP2" class="btn locked" onclick="goCheckpoint2()" disabled>
+        Navigate to Checkpoint 2
     </button>
-
-  <div class="footer-note">
-    EcoTrackr © 2025 · Safety-First Eco Tourism
-  </div>
-
 </div>
 
 <script>
+function toggleButtons() {
+    const isChecked = document.getElementById('consentCheckbox').checked;
+    const btn1 = document.getElementById('btnCP1');
+    const btn2 = document.getElementById('btnCP2');
+
+    if (isChecked) {
+        // Unlock buttons
+        btn1.className = "btn primary";
+        btn2.className = "btn primary";
+        btn1.disabled = false;
+        btn2.disabled = false;
+    } else {
+        // Lock buttons
+        btn1.className = "btn locked";
+        btn2.className = "btn locked";
+        btn1.disabled = true;
+        btn2.disabled = true;
+    }
+}
+
 function goCheckpoint1() {
-  window.location.href = "https://www.google.com/maps?q=3.0712,101.4999";
+    window.location.href = "https://www.google.com/maps?q=3.0698,101.5037";
 }
 
 function goCheckpoint2() {
-  window.location.href = "https://www.google.com/maps?q=3.0712,101.4999";
+    window.location.href = "https://www.google.com/maps?q=3.0725,101.4812";
 }
 </script>
 
