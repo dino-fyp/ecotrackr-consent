@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>EcoTrackr – Trail Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<title>EcoTrackr – Trail Consent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -14,127 +16,168 @@ body {
   color: #0f172a;
 }
 
-.app {
+.phone {
   max-width: 420px;
   margin: auto;
-  background: #fff;
+  background: #ffffff;
   border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
   overflow: hidden;
 }
 
-/* Header */
 .header {
-  padding: 20px;
+  padding: 24px 20px 16px;
+  text-align: center;
   border-bottom: 1px solid #e5e7eb;
 }
+
 .header h2 {
   margin: 0;
   font-size: 22px;
+  font-weight: 700;
 }
-.header span {
+
+.header p {
+  margin-top: 6px;
   font-size: 14px;
-  color: #16a34a;
-  font-weight: 600;
+  color: #64748b;
 }
 
-/* Section */
-.section {
+.content {
   padding: 20px;
-}
-.card {
-  background: #f8fafc;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-/* Buttons */
+.section {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.section strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.status {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.buttons {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
 .btn {
-  width: 100%;
   padding: 14px;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
-  border: none;
   cursor: pointer;
+  border: none;
 }
 
 .btn.primary {
   background: #2563eb;
-  color: #fff;
+  color: #ffffff;
 }
+.btn.primary:hover { background: #1d4ed8; }
 
 .btn.secondary {
-  background: #e5e7eb;
-  color: #334155;
+  background: #e2e8f0;
+  color: #475569;
 }
 
-.btn.disabled {
-  background: #cbd5e1;
-  color: #64748b;
+.btn.locked {
+  background: #e5e7eb;
+  color: #94a3b8;
   cursor: not-allowed;
 }
 
-/* Emergency */
-.emergency {
+.btn.emergency {
   background: #fee2e2;
   color: #991b1b;
+}
+
+.footer-note {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+  padding-bottom: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<div class="phone">
 
   <div class="header">
     <h2>EcoTrackr</h2>
-    <span>● On Trail</span>
+    <p>Eco-Trail Safety & Navigation</p>
   </div>
 
-  <div class="section">
+  <div class="content">
 
-    <div class="card">
+    <p>
+      By participating in the Eco-Trail activity, you acknowledge that outdoor
+      activities involve inherent risks such as uneven terrain, weather changes,
+      and wildlife encounters.
+    </p>
+
+    <p>
+      You agree to follow all safety instructions provided at EcoTrackr checkpoints
+      and take responsibility for your own safety during the trail.
+    </p>
+
+    <div class="section">
       <strong>📍 Checkpoint Progress</strong>
-      <p style="margin:6px 0 0;font-size:14px;">
+      <div class="status">
         Checkpoint 1: ❌ Not checked-in<br>
         Checkpoint 2: 🔒 Locked
-      </p>
+      </div>
     </div>
 
-    <div class="card">
-      <strong>Trail Navigation</strong>
-      <p style="font-size:14px;">
-        Use the buttons below to navigate between trail checkpoints.
-      </p>
+    <div class="section">
+      <strong>🧭 Trail Navigation</strong>
+      Use the buttons below to navigate between trail checkpoints.
     </div>
 
-    <button class="btn primary"
-      onclick="openMap(3.0712, 101.4999)">
+  </div>
+
+  <div class="buttons">
+    <button class="btn primary" onclick="goCheckpoint1()">
       Navigate to Checkpoint 1
     </button>
 
-    <br><br>
-
-    <button class="btn disabled" disabled>
+    <button class="btn locked">
       Navigate to Checkpoint 2 (Locked)
     </button>
 
-    <br><br>
-
-    <button class="btn emergency"
-      onclick="alert('Emergency alert sent to authorities')">
+    <button class="btn emergency" onclick="emergencyHelp()">
       🚨 Emergency Assistance
     </button>
+  </div>
 
+  <div class="footer-note">
+    EcoTrackr © 2025 · Safety-First Eco Tourism
   </div>
 
 </div>
 
 <script>
-function openMap(lat, lon) {
-  window.location.href = `https://www.google.com/maps?q=${lat},${lon}`;
+function goCheckpoint1() {
+  window.location.href = "https://www.google.com/maps?q=3.0712,101.4999";
+}
+
+function emergencyHelp() {
+  alert("If this is an emergency, please contact local authorities immediately.");
 }
 </script>
 
