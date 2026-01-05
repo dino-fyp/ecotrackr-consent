@@ -141,6 +141,24 @@ body {
       Use the buttons below to navigate between trail checkpoints.
     </div>
 
+    <div class="divider"></div>
+
+    <div class="location">
+      <strong>📍 Trail Starting Point</strong>
+      Tap “Accept & Continue” to open Google Maps and navigate to the Checkpoint 1.
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn accept" onclick="acceptConsent()">
+      I Agree & Continue
+    </button>
+
+    <button class="btn decline" onclick="declineConsent()">
+      I Do Not Agree
+    </button>
+  </div>
+
   </div>
 
   <div class="buttons">
@@ -151,11 +169,6 @@ body {
     <button class="btn primary" onclick="goCheckpoint2()">
       Navigate to Checkpoint 2
     </button>
-
-    <button class="btn emergency" onclick="emergencyHelp()">
-      🚨 Emergency Assistance
-    </button>
-  </div>
 
   <div class="footer-note">
     EcoTrackr © 2025 · Safety-First Eco Tourism
@@ -168,8 +181,8 @@ function goCheckpoint1() {
   window.location.href = "https://www.google.com/maps?q=3.0712,101.4999";
 }
 
-function emergencyHelp() {
-  alert("If this is an emergency, please contact local authorities immediately.");
+function goCheckpoint2() {
+  window.location.href = "https://www.google.com/maps?q=3.0712,101.4999";
 }
 </script>
 
