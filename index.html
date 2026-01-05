@@ -1,371 +1,142 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8" />
-
-  <title>EcoTrackr – Trail Consent</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-
-
-  <style>
-
-    * {
-
-      box-sizing: border-box;
-
-    }
-
-
-
-    body {
-
-      margin: 0;
-
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-
-      background: linear-gradient(180deg, #f5f7fb, #eef2f7);
-
-      padding: 20px;
-
-      color: #0f172a;
-
-    }
-
-
-
-    .phone {
-
-      max-width: 420px;
-
-      margin: auto;
-
-      background: #ffffff;
-
-      border-radius: 24px;
-
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-
-      overflow: hidden;
-
-    }
-
-
-
-    .header {
-
-      padding: 24px 20px 16px;
-
-      text-align: center;
-
-      border-bottom: 1px solid #e5e7eb;
-
-    }
-
-
-
-    .header h2 {
-
-      margin: 0;
-
-      font-size: 22px;
-
-      font-weight: 700;
-
-    }
-
-
-
-    .header p {
-
-      margin-top: 6px;
-
-      font-size: 14px;
-
-      color: #64748b;
-
-    }
-
-
-
-    .content {
-
-      padding: 20px;
-
-      max-height: 55vh;
-
-      overflow-y: auto;
-
-      font-size: 15px;
-
-      line-height: 1.6;
-
-    }
-
-
-
-    .content p {
-
-      margin-bottom: 14px;
-
-    }
-
-
-
-    .divider {
-
-      height: 1px;
-
-      background: #e5e7eb;
-
-      margin: 18px 0;
-
-    }
-
-
-
-    .location {
-
-      background: #f8fafc;
-
-      border-radius: 12px;
-
-      padding: 14px;
-
-      margin-bottom: 18px;
-
-    }
-
-
-
-    .location strong {
-
-      display: block;
-
-      margin-bottom: 6px;
-
-    }
-
-
-
-    .buttons {
-
-      padding: 18px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
-
-      border-top: 1px solid #e5e7eb;
-
-    }
-
-
-
-    .btn {
-
-      padding: 14px;
-
-      border-radius: 12px;
-
-      font-size: 16px;
-
-      font-weight: 600;
-
-      text-align: center;
-
-      cursor: pointer;
-
-      border: none;
-
-    }
-
-
-
-    .btn.accept {
-
-      background: #2563eb;
-
-      color: #ffffff;
-
-    }
-
-
-
-    .btn.accept:hover {
-
-      background: #1d4ed8;
-
-    }
-
-
-
-    .btn.decline {
-
-      background: #f1f5f9;
-
-      color: #334155;
-
-    }
-
-
-
-    .btn.decline:hover {
-
-      background: #e2e8f0;
-
-    }
-
-
-
-    .footer-note {
-
-      text-align: center;
-
-      font-size: 12px;
-
-      color: #94a3b8;
-
-      padding-bottom: 14px;
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<title>EcoTrackr – Trail Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #f5f7fb, #eef2f7);
+  padding: 20px;
+  color: #0f172a;
+}
+
+.app {
+  max-width: 420px;
+  margin: auto;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.header span {
+  font-size: 14px;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Section */
+.section {
+  padding: 20px;
+}
+.card {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn.secondary {
+  background: #e5e7eb;
+  color: #334155;
+}
+
+.btn.disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+/* Emergency */
+.emergency {
+  background: #fee2e2;
+  color: #991b1b;
+}
+</style>
 </head>
 
 <body>
 
-
-
-<div class="phone">
-
-
+<div class="app">
 
   <div class="header">
-
-    <h2>EcoTrackr Consent</h2>
-
-    <p>Eco-Trail Safety & Navigation</p>
-
+    <h2>EcoTrackr</h2>
+    <span>● On Trail</span>
   </div>
 
+  <div class="section">
 
-
-  <div class="content">
-
-    <p>
-
-      By participating in the Eco-Trail activity, you acknowledge that outdoor
-
-      activities involve inherent risks, including uneven terrain, weather changes,
-
-      and possible wildlife encounters.
-
-    </p>
-
-
-
-    <p>
-
-      You agree to follow all safety instructions provided by EcoTrackr checkpoints
-
-      and to take full responsibility for your personal safety during the activity.
-
-    </p>
-
-
-
-    <p>
-
-      In case of emergency, please proceed to the nearest safety checkpoint or
-
-      contact local authorities immediately.
-
-    </p>
-
-
-
-    <div class="divider"></div>
-
-
-
-    <div class="location">
-
-      <strong>📍 Trail Starting Point</strong>
-
-      Tap “Accept & Continue” to open Google Maps and navigate to the Checkpoint 1.
-
+    <div class="card">
+      <strong>📍 Checkpoint Progress</strong>
+      <p style="margin:6px 0 0;font-size:14px;">
+        Checkpoint 1: ❌ Not checked-in<br>
+        Checkpoint 2: 🔒 Locked
+      </p>
     </div>
 
-  </div>
+    <div class="card">
+      <strong>Trail Navigation</strong>
+      <p style="font-size:14px;">
+        Use the buttons below to navigate between trail checkpoints.
+      </p>
+    </div>
 
-
-
-  <div class="buttons">
-
-    <button class="btn accept" onclick="acceptConsent()">
-
-      I Agree & Continue
-
+    <button class="btn primary"
+      onclick="openMap(3.0712, 101.4999)">
+      Navigate to Checkpoint 1
     </button>
 
+    <br><br>
 
+    <button class="btn disabled" disabled>
+      Navigate to Checkpoint 2 (Locked)
+    </button>
 
-    <button class="btn decline" onclick="declineConsent()">
+    <br><br>
 
-      I Do Not Agree
-
+    <button class="btn emergency"
+      onclick="alert('Emergency alert sent to authorities')">
+      🚨 Emergency Assistance
     </button>
 
   </div>
-
-
-
-  <div class="footer-note">
-
-    EcoTrackr © 2025 · Safety-First Eco Tourism
-
-  </div>
-
-
 
 </div>
 
-
-
 <script>
-
-  function acceptConsent() {
-
-    // Redirect to Google Maps
-
-    window.location.href = "https://www.google.com/maps?q=3.0712, 101.4999";
-
-  }
-
-
-
-  function declineConsent() {
-
-    alert(
-
-      "You must accept the consent to participate in the Eco-Trail activity."
-
-    );
-
-  }
-
+function openMap(lat, lon) {
+  window.location.href = `https://www.google.com/maps?q=${lat},${lon}`;
+}
 </script>
 
-
-
 </body>
-
 </html>
